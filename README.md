@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Campus Drive Event Management (Prototype)
+Overview
+This repository contains a full-stack prototype for a Campus Drive Event Management system. The project provides APIs and interfaces for event creation, student registrations, attendance, feedback collection, and essential reporting features. I designed this system to support both the administrative backend and student/mobile dashboards.
 
-## Getting Started
+Stack:
 
-First, run the development server:
+Backend: Node.js + Express + SQLite (better-sqlite3)
 
-```bash
+Frontend: React / Next.js and React Native + Expo
+
+Database: SQLite
+
+Focus:
+Backend with RESTful APIs and modular frontend app (both web and mobile).
+
+Deliverables:
+
+Source code
+
+Design Document
+
+Testing Report
+
+AI Usage Proof (self-documented)
+
+Features
+Event Management
+Admins can create, update, list, or delete campus events.
+
+Student Registration
+Secure student sign-up and login.
+
+Register for events (duplicate prevention, field validation).
+
+Attendance Tracking
+Mark event attendance per student.
+
+Tracks presence and optionally supports feedback recall.
+
+Feedback Collection
+Students can submit a rating and comment after attending an event.
+
+Reporting
+See registrations per event.
+
+View attendance percentages.
+
+Get average feedback for each event.
+
+Project Structure
+text
+CAMPUS-EVENT-ADMIN/
+│
+├── campus-event-backend/
+│   ├── server.js         # Express backend API with SQLite
+│   ├── events.db         # Main SQLite database
+│   ├── package.json      # Backend dependencies
+│
+├── src/
+│   ├── app/              # Web frontend (Next.js app directory)
+│   ├── components/
+│   │   └── Providers.tsx # React context/providers for theme/auth
+│   └── theme.ts          # Theme settings for frontend
+│
+├── StudentEventApp/      # Mobile app code (React Native/Expo)
+│
+├── public/               # Static assets for frontend (if web)
+├── README.md             # Project instructions and overview (this file)
+├── .env.local            # Local environment variables (not in repo)
+├── .gitignore            # Files/folders not to track in Git
+├── package.json          # Frontend dependencies
+├── tsconfig.json         # TypeScript configuration
+Setup Instructions
+Backend
+Navigate to campus-event-backend
+
+Install backend dependencies:
+
+bash
+npm install
+Start the backend server:
+
+bash
+node server.js
+Server runs at http://localhost:4000
+
+Web Frontend
+In the project root, install dependencies:
+
+bash
+npm install
+Start the Next.js development server:
+
+bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Access the frontend at http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mobile App (Optional)
+Go to StudentEventApp directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+bash
+npm install
+Start Expo:
 
-## Learn More
+bash
+npm start
+Use Expo Go on your device to test the app.
 
-To learn more about Next.js, take a look at the following resources:
+API Endpoints (Summary)
+Event Management
+POST /events – Create event
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GET /events – List all events
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+PUT /events – Update event
 
-## Deploy on Vercel
+DELETE /events – Delete event
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Student Registration
+POST /students – Add a student
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+POST /login – Student login
+
+POST /register – Register for event
+
+Attendance
+POST /attendance – Mark attendance
+
+Feedback
+POST /feedback – Send event feedback
+
+Reporting
+GET /reports/registrations – All registration stats
+
+GET /reports/attendance – Attendance per event
+
+GET /reports/feedback – Feedback summary
+
+Notes
+The backend and frontend projects are separated for modular development.
+
+The SQLite database (events.db) holds all persistent data.
+
+API security (auth, permissions) can be enhanced as a next step.
+
+Contributions and optimizations are welcome!
+
+Proof of AI Usage
+While some architectural brainstorming involved AI tools, this README and major documentation reflect my direct understanding of the codebase and project intent.
